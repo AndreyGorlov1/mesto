@@ -2,7 +2,7 @@ document.querySelector('.profile__edit-image').addEventListener('click', changeS
 document.querySelector('.popup__close').addEventListener('click', changeStatusPopup);
 
 function changeStatusPopup () {
-  document.querySelector('.popup').classList.toggle('popup__opened');
+  document.querySelector('.popup').classList.toggle('popup_opened');
 }
 
 let mainName = document.querySelector('.profile__main-name');
