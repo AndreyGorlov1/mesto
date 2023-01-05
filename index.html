@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Интересные места</title>
+  <link rel="stylesheet" href="pages/index.css">
+</head>
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="images/Mesto.svg" alt="Логотип" class="header__logo">
+      <div class="header__line"></div>
+    </header>
+    <main class="main">
+      <section class="profile">
+        <img src="images/avatar.png" alt="Фотография аватара" class="profile__avatar">
+        <div class="profile__info">
+          <p class="profile__main-name">Жак-Ив Кусто</p>
+          <button type="submit" class="profile__edit-button">
+            <img src="images/Edit.png" alt="Редактировать" class="profile__edit-image">
+          </button>
+          <p class="profile__activity">Исследователь океана</p>
+        </div>
+        <button type="submit" class="profile__add-button"><img src="images/Add.svg" alt="Добавить"></button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img src="images/Karachaevsk.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Карачаевск</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+        <div class="element">
+          <img src="images/Elbrus_mount.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Гора Эльбрус</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+        <div class="element">
+          <img src="images/Dombay.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Домбай</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+        <div class="element">
+          <img src="images/Elbrus_mount.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Гора Эльбрус</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+        <div class="element">
+          <img src="images/Dombay.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Домбай</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+        <div class="element">
+          <img src="images/Karachaevsk.png" alt="Фотография места" class="element__image">
+          <div class="element__info"><p class="element__name">Карачаево - Черкессия</p><img src="images/Like.svg" alt="Мне нравится!" class="element__like"></div>
+        </div>
+      </section>
+      <section class="popup">
+        <form action="#" class="popup__form">
+          <p class="popup__edit-profile">Редактирование профиля</p>
+          <input type="text" name="name" class="popup__input popup__input-name" value="Жак-Ив Кусто">
+          <div class="popup__line"></div>
+          <input type="text" name="name" class="popup__input popup__input-activity" value="Исследователь океана">
+          <div class="popup__line"></div>
+          <button type="submit" class="popup__submit">Сохранить</button>
+          <button type="button" class="popup__close"><img src="images/Close_Icon.png" alt="Закрыть" class="popup__close-image"></button>
+        </form>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+</html>
