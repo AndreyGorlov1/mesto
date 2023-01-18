@@ -6,14 +6,15 @@
   height: 24px;
   border: 1px solid #fff;
   box-sizing: border-box;
+  justify-self: end;
   align-self: center;
+  cursor: pointer;
 }
 @media screen and (max-width: 667px) {
-  /* Надеюсь это считаться за ошибку, ведь в конечном итоге - выглядит нормально... */
   .profile__edit-button {
-  width: 18px;
-  height: 18px;
-  margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
   }
 }
 .profile__edit-button:hover {

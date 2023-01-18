@@ -6,7 +6,12 @@
   height: 50px;
   background-color: inherit;
   border: 2px solid #fff;
+  cursor: pointer;
   border-radius: 2px;
+  background-image: url(../../../images/Add.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: center;
 }
 .profile__add-button:hover{
   transition: 0.3s linear;
@@ -16,5 +21,6 @@
   .profile__add-button {
     min-width: 282px;
     margin: 36px 0 0;
+    background-size: 16px 16px;
   }
 }

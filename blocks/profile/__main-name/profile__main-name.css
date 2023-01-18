@@ -10,6 +10,7 @@
 }
 @media screen and (max-width: 667px) {
   .profile__main-name {
+    max-width: 250px;
     font-size: 27px;
     line-height: 33px;
     align-self: center;
