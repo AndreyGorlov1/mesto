@@ -1,11 +1,11 @@
 .main {
   max-width: 880px;
-  margin: 40px auto 67px;
+  margin: 40px auto 50px;
   /* так нижний отступ, как макете */
 }
 @media screen and (max-width: 667px) {
   .main {
-    margin: 39px 19px 48px;
+    margin: 39px 19px 30px;
     /* и тут тоже */
   }
 }
