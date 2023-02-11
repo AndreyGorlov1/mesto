@@ -10,7 +10,6 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
-  transition: 0.3s linear;
   cursor: pointer;
 }
 .popup__submit:hover {
