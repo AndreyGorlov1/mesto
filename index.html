@@ -31,6 +31,13 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
+    <div class="popup" id="bigPicturePopup">
+      <div class="popup__big-picture-container">
+        <img src="#" alt="Большая фотография места" class="popup__image">
+        <p class="popup__image-name"></p>
+        <button type="button" class="popup__close" id="bigPicturePopupClose"></button>
+      </div>
+    </div>
     <div class="popup" id="editProfilePopup">
       <div class="popup__container">
         <form action="#" class="popup__form" id="editProfile" name="editProfile">
@@ -68,15 +75,6 @@
         </button>
       </div>
     </article>
-  </template>
-  <template id="bigPicture">
-    <div class="popup" id="bigPicturePopup">
-      <div class="popup__big-picture-container">
-        <img src="#" alt="Большая фотография места" class="popup__image">
-        <p class="popup__image-name"></p>
-        <button type="button" class="popup__close" id="bigPicturePopupClose"></button>
-      </div>
-    </div>
   </template>
   <script src="js/script.js"></script>
 </body>
