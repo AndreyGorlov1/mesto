@@ -131,7 +131,7 @@ function handleAddFormSubmit(evt) {
 
   if (addCardName.value != '' && addCardExtra.value != '' && addCardName.value != ' ' && addCardExtra.value != ' ') {
     // Пустые строки не пройдут!!!
-    addMesto(addCardName.value, addCardExtra.value);
+    addCardOnPage(addCardName.value, addCardExtra.value);
   }
 
   evt.target.reset()
