@@ -25,6 +25,8 @@ const bigPictureName = document.querySelector('.popup__image-name');
 const bigPicturePopupClose = document.querySelector('#bigPicturePopupClose');
 const closeButtons = document.querySelectorAll('.popup__close');
 
+const popupsArray = Array.from(document.querySelectorAll('.popup'));
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -52,21 +54,23 @@ const initialCards = [
   }
 ];
 
-// function addMesto(name, link) {
-//   addCardOnPage(name, link);
-// }
-
 initialCards.forEach(function(item) {
   addCardOnPage(item.name, item.link);
-})
+});
+
+popupsArray.forEach(function(item) {
+  item.addEventListener('click', function(evt) {
+    closePopup(evt.target);
+  });
+});
 
 closeButtons.forEach(function(button) {
   const popup = button.closest('.popup');
 
   button.addEventListener('click', function() {
     closePopup(popup);
-  })
-})
+  });
+});
 
 function createCard(name, link) {
   const cardItem = cardElement.querySelector('.element').cloneNode('true');
@@ -98,24 +102,24 @@ function createCard(name, link) {
   });
 
   return cardItem;
-}
+};
 
 function addCardOnPage(name, link) {
   const card = createCard(name, link);
 
   cardSection.prepend(card);
-}
+};
 
 function deleteCard(card) {
   card.closest('.element').remove();
-}
+};
 
-function openPopup(button) {
-  button.classList.add('popup_opened');
-}
-function closePopup(button) {
-  button.classList.remove('popup_opened');
-}
+function openPopup(item) {
+  item.classList.add('popup_opened');
+};
+function closePopup(item) {
+  item.classList.remove('popup_opened');
+};
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -124,7 +128,7 @@ function handleEditFormSubmit(evt) {
   extra.textContent = extraInput.value;
 
   closePopup(editProfilePopup);
-}
+};
 
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
@@ -132,13 +136,12 @@ function handleAddFormSubmit(evt) {
   if (addCardName.value != '' && addCardExtra.value != '' && addCardName.value != ' ' && addCardExtra.value != ' ') {
     // Пустые строки не пройдут!!!
     addCardOnPage(addCardName.value, addCardExtra.value);
-  }
+  };
 
-  evt.target.reset()
+  evt.target.reset();
 
   closePopup(addMestoPopup);
-}
-
+};
 
 editProfileForm.addEventListener('submit', handleEditFormSubmit);
 addMestoForm.addEventListener('submit', handleAddFormSubmit);

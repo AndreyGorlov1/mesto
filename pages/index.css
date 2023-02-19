@@ -32,17 +32,20 @@
 @import url(../blocks/element/__delete/element__delete.css);
 @import url(../blocks/element/__delete-image/__delete-image.css);
 
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__error-span/form__error-span.css);
+@import url(../blocks/form/__error-span/_enabled/form__error-span_enabled.css);
+@import url(../blocks/form/__submit/form__submit.css);
+
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__form/popup__form.css);
-@import url(../blocks/popup/__close/popup__close.css);
-@import url(../blocks/popup/__edit-profile/popup__edit-profile.css);
-@import url(../blocks/popup/__input/popup__input.css);
-@import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__big-picture-container/popup__big-picture-container.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__image-name/popup__image-name.css);
+@import url(../blocks/popup/__close/popup__close.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
