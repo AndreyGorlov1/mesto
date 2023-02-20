@@ -133,9 +133,7 @@ function handleEditFormSubmit(evt) {
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  if (addCardName.value != '' && addCardExtra.value != '' && addCardName.value != ' ' && addCardExtra.value != ' ') {
-    addCardOnPage(addCardName.value, addCardExtra.value);
-  };
+  addCardOnPage(addCardName.value, addCardExtra.value);
 
   evt.target.reset();
 
@@ -154,7 +152,7 @@ addCard.addEventListener('click', function() {
 });
 
 document.addEventListener('keydown', function(evt) {
-  if (evt.key == 'Escape' && document.querySelector('.popup_opened')) {
+  if (evt.key === 'Escape' && document.querySelector('.popup_opened')) {
     closePopup(document.querySelector('.popup_opened'));
   }
 })
