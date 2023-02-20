@@ -8,18 +8,31 @@ formList.forEach(function(element) {
   inputList.forEach(function(item) {
     const formErrorSpan = item.closest('.form__field').querySelector('.form__error-span');
     item.addEventListener('input', function() {
-      checkInputValidity(item, formErrorSpan, submitButton);
+      checkInputValidity(item, formErrorSpan);
+      toggleSubmitButtonState(submitButton, inputList);
     });
   });
 });
 
-function checkInputValidity (formInput, errorSpan, buttonStats) {
+function toggleSubmitButtonState(button, inputList) {
+  if (hasInvalidInput(inputList)) {
+    button.setAttribute('disabled', '')
+  } else {
+    button.removeAttribute('disabled');
+  }
+}
+// setAttribute
+function hasInvalidInput(inputArray) {
+  return inputArray.some((inputElement) => {
+    return !inputElement.validity.valid;
+  })
+}
+
+function checkInputValidity (formInput, errorSpan) {
   if (!formInput.validity.valid) {
     showErrorMessage(errorSpan, formInput.validationMessage);
-    buttonStats.setAttribute('disabled', 'disabled');
   } else if (formInput.validity.valid) {
     hideErrorMessage(errorSpan);
-    buttonStats.removeAttribute('disablied');
   };
 };
 

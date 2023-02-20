@@ -25,7 +25,7 @@ const bigPictureName = document.querySelector('.popup__image-name');
 const bigPicturePopupClose = document.querySelector('#bigPicturePopupClose');
 const closeButtons = document.querySelectorAll('.popup__close');
 
-const popupsArray = Array.from(document.querySelectorAll('.popup'));
+const popupsList = Array.from(document.querySelectorAll('.popup'));
 
 const initialCards = [
   {
@@ -58,7 +58,7 @@ initialCards.forEach(function(item) {
   addCardOnPage(item.name, item.link);
 });
 
-popupsArray.forEach(function(item) {
+popupsList.forEach(function(item) {
   item.addEventListener('click', function(evt) {
     closePopup(evt.target);
   });
@@ -134,7 +134,6 @@ function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
   if (addCardName.value != '' && addCardExtra.value != '' && addCardName.value != ' ' && addCardExtra.value != ' ') {
-    // Пустые строки не пройдут!!!
     addCardOnPage(addCardName.value, addCardExtra.value);
   };
 
@@ -153,3 +152,9 @@ editProfile.addEventListener('click', function() {
 addCard.addEventListener('click', function() {
   openPopup(addMestoPopup);
 });
+
+document.addEventListener('keydown', function(evt) {
+  if (evt.key == 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+})
