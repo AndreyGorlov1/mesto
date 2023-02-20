@@ -154,7 +154,7 @@ addCard.addEventListener('click', function() {
 });
 
 document.addEventListener('keydown', function(evt) {
-  if (evt.key == 'Escape') {
+  if (evt.key == 'Escape' && document.querySelector('.popup_opened')) {
     closePopup(document.querySelector('.popup_opened'));
   }
 })

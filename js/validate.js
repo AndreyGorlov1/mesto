@@ -4,13 +4,13 @@ formList.forEach(function(element) {
   const inputList = Array.from(element.querySelectorAll('.form__input'));
 
   const submitButton = element.querySelector('.form__submit');
-
   inputList.forEach(function(item) {
     const formErrorSpan = item.closest('.form__field').querySelector('.form__error-span');
     item.addEventListener('input', function() {
       checkInputValidity(item, formErrorSpan);
       toggleSubmitButtonState(submitButton, inputList);
     });
+    toggleSubmitButtonState(submitButton, inputList);
   });
 });
 
