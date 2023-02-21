@@ -114,11 +114,24 @@ function deleteCard(card) {
   card.closest('.element').remove();
 };
 
+const closeOnKey = function(evt) {
+  let openedPopup = document.querySelector('.popup_opened');//Я думал что на этом моменте все сломается.
+  if (evt.key === 'Escape' && openedPopup) {
+    closePopup(openedPopup);
+  };
+  //НЕ могу поверить но это работает!!!
+  //Сам решил - без мам, пап и кредитов...
+  // Да я гуру JS, шучу... Далеко еще!
+}
+
 function openPopup(item) {
   item.classList.add('popup_opened');
+  // При установке на текущий item - не работает, а так работает
+  document.addEventListener('keydown', closeOnKey);//Нашел на просторах интернета решение... Это же еще додумать надо до такого... Аж голова вскипела.
 };
 function closePopup(item) {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnKey);
 };
 
 function handleEditFormSubmit(evt) {
@@ -150,9 +163,3 @@ editProfile.addEventListener('click', function() {
 addCard.addEventListener('click', function() {
   openPopup(addMestoPopup);
 });
-
-document.addEventListener('keydown', function(evt) {
-  if (evt.key === 'Escape' && document.querySelector('.popup_opened')) {
-    closePopup(document.querySelector('.popup_opened'));
-  }
-})
