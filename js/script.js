@@ -115,13 +115,10 @@ function deleteCard(card) {
 };
 
 const closeOnKey = function(evt) {
-  let openedPopup = document.querySelector('.popup_opened');//Я думал что на этом моменте все сломается.
-  if (evt.key === 'Escape' && openedPopup) {
+  if (evt.key === 'Escape') {
+  const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   };
-  //НЕ могу поверить но это работает!!!
-  //Сам решил - без мам, пап и кредитов...
-  // Да я гуру JS, шучу... Далеко еще!
 }
 
 function openPopup(item) {
