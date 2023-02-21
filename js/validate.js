@@ -26,7 +26,6 @@ function setEventLiestener(formElement) {
       checkInputValidity(inputElement,errorSpan);
       toggleSubmitButtonState(buttonElement, inputList);
     });
-    console.log(inputElement.validity.valid);
   });
 };
 
@@ -41,8 +40,10 @@ function toggleSubmitButtonState(button, inputList) {
 function checkInputValidity (formInput, errorSpan) {
   if (!formInput.validity.valid) {
     showErrorMessage(errorSpan, formInput.validationMessage);
+    formInput.classList.add('form__input_invalid');
   } else if (formInput.validity.valid) {
     hideErrorMessage(errorSpan);
+    formInput.classList.remove('form__input_invalid');
   };
 };
 
