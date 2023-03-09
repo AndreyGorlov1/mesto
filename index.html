@@ -31,22 +31,22 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup" id="bigPicturePopup">
+    <!-- <div class="popup" id="bigPicturePopup">
       <div class="popup__big-picture-container">
         <img src="#" alt="Большая фотография места" class="popup__image">
         <p class="popup__image-name"></p>
         <button type="button" class="popup__close" id="bigPicturePopupClose"></button>
       </div>
-    </div>
+    </div> -->
     <div class="popup" id="editProfilePopup">
       <div class="popup__container">
         <form action="#" class="form" id="editProfile" name="editProfile" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
-          <label class="form__field">
+          <label class="form__field form__field_profile-name">
             <input type="text" name="name" id="input__name" class="form__input" value="" placeholder="Имя пользователя" minlength="2" maxlength="40" required>
             <span class="form__error-span"></span>
           </label>
-          <label class="form__field">
+          <label class="form__field form__field_profile-extra">
             <input type="text" name="name" id="input__extra" class="form__input" value="" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
             <span class="form__error-span"></span>
           </label>
@@ -59,13 +59,13 @@
       <div class="popup__container">
         <form action="#" class="form" id="addMesto" name="editProfile" novalidate>
           <h2 class="form__title">Новое место</h2>
-          <label class="form__field">
+          <label class="form__field form__field_add-name">
             <input type="text" name="name" id="addCardName" class="form__input" value="" placeholder="Название" minlength="2" maxlength="30" required>
-            <span class="form__error-span"></span>
+            <span class="form__error-span form__error-span_inavlid-name"></span>
           </label>
-          <label class="form__field">
+          <label class="form__field form__field_add-extra">
             <input type="url" name="name" id="addCardExtra" class="form__input" value="" placeholder="Ссылка на картинку" required>
-            <span class="form__error-span"></span>
+            <span class="form__error-span form__error-span_invalid_extra"></span>
           </label>
           <button type="submit" class="form__submit">Создать</button>
           <button type="button" class="popup__close" id="addPopupClose"></button>
@@ -85,9 +85,18 @@
           <img class="element__delete-image" src="./images/Trash.svg" alt="Удалить">
         </button>
       </div>
+      <div class="popup" id="bigPicturePopup">
+        <div class="popup__big-picture-container">
+          <img src="#" alt="Большая фотография места" class="popup__image">
+          <p class="popup__image-name"></p>
+          <button type="button" class="popup__close" id="bigPicturePopupClose"></button>
+        </div>
+      </div>
     </article>
   </template>
-  <script src="js/script.js"></script>
-  <script src="js/validate.js"></script>
+  <script type="module" src="js/card.js"></script>
+  <script type="module" src="js/formValidator.js"></script>
+  <script type="module" src="js/script.js"></script>
+  <!-- <script src="js/validate.js"></script> -->
 </body>
 </html>
