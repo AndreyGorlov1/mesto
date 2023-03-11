@@ -42,17 +42,7 @@ export class Card {
       this._closeBigPicture();
     });
 
-    this._card.addEventListener('keydown', (evt) => {
-      if(evt.key === 'Escape') {
-        this._closeBigPicture();
-      }
-    });
-
-    this._card.querySelector('.popup').addEventListener('click', () => {
-      if(popup_opened) {
-        this._closeBigPicture();
-      }
-    });
+    
   }
 
   _isLiked() {
