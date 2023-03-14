@@ -4,26 +4,21 @@ import { FormValidator } from './formValidator.js';
 
 const mainName = document.querySelector('.profile__main-name');
 const extra = document.querySelector('.profile__activity');
-const editProfileForm = document.querySelector('#editProfile');
-const nameInput = document.querySelector('#input__name');
-const extraInput = document.querySelector('#input__extra');
-const editProfilePopup = document.querySelector('#editProfilePopup');
-const editProfile = document.querySelector('.profile__edit-button');
+const profileFormEdit = document.querySelector('#editProfile');
+const nameInput = document.querySelector('#profileName');
+const extraInput = document.querySelector('#profileExtra');
+const profilePopupEdit = document.querySelector('#editProfilePopup');
+const profileEdit = document.querySelector('.profile__edit-button');
 
-const addCard = document.querySelector('.profile__add-button');
+const cardAddButton = document.querySelector('.profile__add-button');
 const cardSection = document.querySelector('.elements');
-const addMestoForm = document.querySelector('#addMesto');
-const addMestoPopup = document.querySelector('#addMestoPopup');
-const addCardName = document.querySelector('#addCardName');
-const addCardExtra = document.querySelector('#addCardExtra');
-const closeButtons = document.querySelectorAll('.popup__close');
+const mestoAddForm = document.querySelector('#addMesto');
+const mestoAddPopup = document.querySelector('#addMestoPopup');
+const cardAddName = document.querySelector('#addCardName');
+const cardAddExtra = document.querySelector('#addCardExtra');
+const buttonsClose = document.querySelectorAll('.popup__close');
 
 const popupsList = Array.from(document.querySelectorAll('.popup'));
-
-const profileNameField = document.querySelector('.form__field_profile-name');
-const profileExtraField = document.querySelector('.form__field_profile-extra');
-const cardAddNameField = document.querySelector('.form__field_add-name');
-const cardAddExtraField = document.querySelector('.form__field_add-extra');
 
 const initialCards = [
   {
@@ -52,17 +47,22 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach(function(item) {
-  createCard(item.name, item.link);
-});
-
 function createCard(name, link) {
-  const card = new Card(name, link);
+  const card = new Card(name, link, '.templateCard');
 
-  const cardElement = card.generateCard();
-
-  cardSection.prepend(cardElement);
+  return card;
 }
+
+
+function addCard(name, link) {
+  const card = createCard(name, link).generateCard();
+
+  cardSection.prepend(card);
+}
+
+initialCards.forEach(function(item) {
+  addCard(item.name, item.link);
+});
 
 popupsList.forEach(function(item) {
   item.addEventListener('click', function(evt) {
@@ -70,7 +70,7 @@ popupsList.forEach(function(item) {
   });
 });
 
-closeButtons.forEach(function(button) {
+buttonsClose.forEach(function(button) {
   const popup = button.closest('.popup');
 
   button.addEventListener('click', function() {
@@ -78,12 +78,12 @@ closeButtons.forEach(function(button) {
   });
 });
 
-const closeOnKey = function(evt) {
+function closeOnKey(evt) { // Не работает
   if (evt.key === 'Escape') {
-  const openedPopup = document.querySelector('.popup_opened');
+    const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
   };
-}
+};
 
 function openPopup(item) {
   item.classList.add('popup_opened');
@@ -91,7 +91,6 @@ function openPopup(item) {
 };
 function closePopup(item) {
   item.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeOnKey);
 };
 
 function handleEditFormSubmit(evt) {
@@ -100,69 +99,49 @@ function handleEditFormSubmit(evt) {
   mainName.textContent = nameInput.value;
   extra.textContent = extraInput.value;
 
-  closePopup(editProfilePopup);
+  closePopup(profilePopupEdit);
 };
 
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  createCard(addCardName.value, addCardExtra.value);
+  createCard(cardAddName.value, cardAddExtra.value);
 
   evt.target.reset();
 
   closePopup(addMestoPopup);
 };
 
-editProfileForm.addEventListener('submit', handleEditFormSubmit);
-addMestoForm.addEventListener('submit', handleAddFormSubmit);
+profileFormEdit.addEventListener('submit', handleEditFormSubmit);
+mestoAddForm.addEventListener('submit', handleAddFormSubmit);
 
-editProfile.addEventListener('click', function() {
-  openPopup(editProfilePopup);
+profileEdit.addEventListener('click', function() {
+  openPopup(profilePopupEdit);
 
   nameInput.value = mainName.textContent;
   extraInput.value = extra.textContent;
   
-  const nameInputValidation = new FormValidator({
+  const inputValidation = new FormValidator({
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
     inputErrorClass: 'form__input_invalid',
     spanClass: '.form__error-span',
     spanErrorClass: 'form__error-span_enabled',
-  }, profileNameField);
+  }, profilePopupEdit);
 
-  nameInputValidation.enableValidation();
-
-  const extraInputValidation = new FormValidator({
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inputErrorClass: 'form__input_invalid',
-    spanClass: '.form__error-span',
-    spanErrorClass: 'form__error-span_enabled',
-  }, profileExtraField);
-
-  extraInputValidation.enableValidation();
+  inputValidation.enableValidation();
 });
 
-addCard.addEventListener('click', function() {
-  openPopup(addMestoPopup);
+cardAddButton.addEventListener('click', function() {
+  openPopup(mestoAddPopup);
 
-  const nameInputValidation = new FormValidator({
+  const inputValidation = new FormValidator({
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
     inputErrorClass: 'form__input_invalid',
     spanClass: '.form__error-span',
     spanErrorClass: 'form__error-span_enabled',
-  }, cardAddNameField);
+  }, mestoAddPopup);
 
-  nameInputValidation.enableValidation();
-
-  const extraInputValidation = new FormValidator({
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inputErrorClass: 'form__input_invalid',
-    spanClass: '.form__error-span',
-    spanErrorClass: 'form__error-span_enabled',
-  }, cardAddExtraField);
-
-  extraInputValidation.enableValidation();
+  inputValidation.enableValidation();
 });

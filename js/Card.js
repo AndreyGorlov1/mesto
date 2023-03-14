@@ -1,12 +1,13 @@
 export class Card {
-  constructor(title, src) {
+  constructor(title, src, templateSelector) {
     this._title = title;
     this._src = src;
+    this._templateSelector = templateSelector;
   }
 
   _getTemplate() {
     const cardElement = document
-    .querySelector('#card')
+    .querySelector(`${this._templateSelector}`)
     .content
     .querySelector('.element')
     .cloneNode('true');
@@ -19,6 +20,7 @@ export class Card {
 
     this._card.querySelector('.element__name').textContent = this._title;
     this._card.querySelector('.element__image').src = this._src;
+    this._card.querySelector('.element__image').alt += ' ' + this._title;
 
     this._setEventListeners();
 
@@ -26,42 +28,32 @@ export class Card {
   }
 
   _setEventListeners() {
+    const _buttonLike = this._card.querySelector('.element__like');
+
     this._card.querySelector('.element__image').addEventListener('click', () => {
       this._openBigPicture();
     });
 
-    this._card.querySelector('.element__like').addEventListener('click', () => {
+    _buttonLike.addEventListener('click', () => {
       this._isLiked();
     });
 
     this._card.querySelector('.element__delete').addEventListener('click', () => {
       this._deleteCard();
     });
-
-    this._card.querySelector('.popup__close').addEventListener('click', () => {
-      this._closeBigPicture();
-    });
-
-    
   }
 
   _isLiked() {
-    this._card.querySelector('.element__like').classList.toggle('element__like_active');
+    this._setEventListeners()._buttonLike.classList.toggle('element__like_active');
   }
 
   _openBigPicture() {
-    this._card.querySelector('.popup').classList.add('popup_opened');
+    const bigPicture = document.querySelector('.popup');
+    bigPicture.classList.add('popup_opened');
 
-    this._card.querySelector('.popup__image').src = this._src;
-    this._card.querySelector('.popup__image-name').textContent = this._title;
+    bigPicture.querySelector('.popup__image').src = this._src;
+    bigPicture.querySelector('.popup__image-name').textContent = this._title;
   };
-
-  _closeBigPicture() {
-    this._card.querySelector('.popup').classList.remove('popup_opened');
-
-    this._card.querySelector('.popup__image').src = '';
-    this._card.querySelector('.popup__image-name').textContent = '';
-  }
 
   _deleteCard() {
     this._card.remove();
