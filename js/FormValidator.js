@@ -14,13 +14,6 @@ export class FormValidator {
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
     this._errorSpan = this._formElement.querySelectorAll(`${this._errorSpan}`);
 
-    // this._input.forEach((item) => {
-    //   item.addEventListener('input', () => {
-    //     console.log(item);
-    //     this._checkInputValidity(item);
-    //   });
-    // });
-
     for (let i = 0; i < this._input.length; i++) {
       this._input[i].addEventListener('input', () => {
         this._checkInputValidity(this._input[i], i)
@@ -32,7 +25,7 @@ export class FormValidator {
     if (!input.validity.valid) {
       this._showErrorMessage(index, input.validationMessage);
       input.classList.add(`${this._inputErrorClass}`);
-      this._toggleSubmitButtonState(index);
+      this._toggleSubmitButtonState();
     } else if (input.validity.valid) {
       this._hideErrorMessage(index);
       input.classList.remove(`${this._inputErrorClass}`);
