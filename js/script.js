@@ -124,8 +124,8 @@ profileEdit.addEventListener('click', function() {
   const inputValidation = new FormValidator({
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
-    inputErrorClass: 'form__input_invalid',
     spanClass: '.form__error-span',
+    inputErrorClass: 'form__input_invalid',
     spanErrorClass: 'form__error-span_enabled',
   }, profilePopupEdit);
 
