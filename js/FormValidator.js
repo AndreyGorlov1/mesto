@@ -10,13 +10,13 @@ export class FormValidator {
   }
 
   _setEventListener() {
-    this._input = this._formElement.querySelectorAll(`${this._inputSelector}`);
+    this._inputArray = this._formElement.querySelectorAll(`${this._inputSelector}`);
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
     this._errorSpan = this._formElement.querySelectorAll(`${this._errorSpan}`);
 
-    for (let i = 0; i < this._input.length; i++) {
-      this._input[i].addEventListener('input', () => {
-        this._checkInputValidity(this._input[i], i)
+    for (let i = 0; i < this._inputArray.length; i++) {
+      this._inputArray[i].addEventListener('input', () => {
+        this._checkInputValidity(this._inputArray[i], i)
       });
     }
   };
@@ -34,9 +34,9 @@ export class FormValidator {
   };
 
   _toggleSubmitButtonState() {
-    if(!this._hasInvalidInput(this._input)) {
+    if(!this._hasInvalidInput(this._inputArray)) {
       this._submitButton.setAttribute('disabled', '');
-    } else if(this._hasInvalidInput(this._input)) {
+    } else if(this._hasInvalidInput(this._inputArray)) {
       this._submitButton.removeAttribute('disabled');
     }
   };

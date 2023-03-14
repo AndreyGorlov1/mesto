@@ -44,7 +44,7 @@ export class Card {
   }
 
   _isLiked() {
-    this._setEventListeners()._buttonLike.classList.toggle('element__like_active');
+    this._buttonLike.classList.toggle('element__like_active');
   }
 
   _openBigPicture() {

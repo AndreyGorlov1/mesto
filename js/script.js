@@ -1,5 +1,5 @@
-import { Card } from './card.js';
-import { FormValidator } from './formValidator.js';
+import { Card } from '../js/Card.js';
+import { FormValidator } from '../js/FormValidator.js';
 
 
 const mainName = document.querySelector('.profile__main-name');
@@ -138,8 +138,8 @@ cardAddButton.addEventListener('click', function() {
   const inputValidation = new FormValidator({
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
-    inputErrorClass: 'form__input_invalid',
     spanClass: '.form__error-span',
+    inputErrorClass: 'form__input_invalid',
     spanErrorClass: 'form__error-span_enabled',
   }, mestoAddPopup);
 
