@@ -13,28 +13,20 @@ export class FormValidator {
     this._inputArray = Array.from(this._formElement.querySelectorAll(`${this._inputSelector}`));
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
     this._errorSpan = this._formElement.querySelectorAll(`${this._errorSpan}`);
-
-    // for (let i = 0; i < this._inputArray.length; i++) {
-    //   this._inputArray[i].addEventListener('input', () => {
-    //     this._checkInputValidity(this._inputArray[i], i)
-    //   });
-    // };
     
-    this._inputArray.forEach((item, index) => {
-      item.addEventListener('input', () => {
-        this._checkInputValidity(item, index);
-      })
+    this._inputArray.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input, index);
+      });
     })
   };
 
   _checkInputValidity(input, index) {
     if (!input.validity.valid) {
-      this._showErrorMessage(index, input.validationMessage);
-      input.classList.add(`${this._inputErrorClass}`);
+      this._showErrorMessage(input, index, input.validationMessage);
       this._toggleSubmitButtonState();
     } else if (input.validity.valid) {
-      this._hideErrorMessage(index);
-      input.classList.remove(`${this._inputErrorClass}`);
+      this._hideErrorMessage(input, index);
       this._toggleSubmitButtonState();
     };
   };
@@ -47,13 +39,17 @@ export class FormValidator {
     }
   };
 
-  _showErrorMessage(index, errorMessage) {
+  _showErrorMessage(input, index, errorMessage) {
+    input.classList.add(`${this._inputErrorClass}`);
+
     this._errorSpan[index].classList.add(`${this._spanErrorClass}`);
 
     this._errorSpan[index].textContent = errorMessage;
   };
 
-  _hideErrorMessage(index) {
+  _hideErrorMessage(input, index) {
+    input.classList.remove(`${this._inputErrorClass}`);
+
     this._errorSpan[index].classList.remove(`${this._spanErrorClass}`);
 
     this._errorSpan[index].textContent = '';
@@ -67,5 +63,6 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListener();
+    this._toggleSubmitButtonState()
   };
-}
+};

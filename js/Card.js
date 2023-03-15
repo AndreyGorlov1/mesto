@@ -28,13 +28,13 @@ export class Card {
   }
 
   _setEventListeners() {
-    const _buttonLike = this._card.querySelector('.element__like');
+    this._buttonLike = this._card.querySelector('.element__like');
 
     this._card.querySelector('.element__image').addEventListener('click', () => {
       this._openBigPicture();
     });
 
-    _buttonLike.addEventListener('click', () => {
+    this._buttonLike.addEventListener('click', () => {
       this._isLiked();
     });
 

@@ -105,7 +105,7 @@ function handleEditFormSubmit(evt) {
 function handleAddFormSubmit(evt) {
   evt.preventDefault();
 
-  createCard(cardAddName.value, cardAddExtra.value);
+  addCard(cardAddName.value, cardAddExtra.value);
 
   evt.target.reset();
 
