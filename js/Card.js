@@ -1,3 +1,5 @@
+import { closeOnKey } from '../js/script.js'
+
 export class Card {
   constructor(title, src, templateSelector) {
     this._title = title;
@@ -43,16 +45,27 @@ export class Card {
     });
   }
 
+  _closeOnKey(evt) {
+    if(evt.code === 'Escape') {
+      console.log(evt);
+      document.querySelector('popup_opened');
+      closeOnKey();
+    }
+  }
+
   _isLiked() {
     this._buttonLike.classList.toggle('element__like_active');
   }
 
   _openBigPicture() {
-    const bigPicture = document.querySelector('.popup');
-    bigPicture.classList.add('popup_opened');
+    this._bigPicture = document.querySelector('.popup');
+    this._bigPicture.classList.add('popup_opened');
 
-    bigPicture.querySelector('.popup__image').src = this._src;
-    bigPicture.querySelector('.popup__image-name').textContent = this._title;
+    this._bigPicture.querySelector('.popup__image').src = this._src;
+
+    this._bigPicture.querySelector('.popup__image-name').textContent = this._title;
+
+    document.addEventListener('keydown', this._closeOnKey);
   };
 
   _deleteCard() {

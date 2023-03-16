@@ -78,9 +78,8 @@ buttonsClose.forEach(function(button) {
   });
 });
 
-function closeOnKey(evt) {
+export function closeOnKey(evt) {
   if(evt.key === 'Escape') {
-    console.log(evt);
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   }
@@ -92,6 +91,7 @@ function openPopup(item) {
 };
 function closePopup(item) {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeOnKey);
 };
 
 function handleEditFormSubmit(evt) {

@@ -1,7 +1,7 @@
 .form__error-span {
   height: 30px;
-  width: 360px;
-  margin: 0 35px 9px;
+  width: 100%;
+  margin-bottom: 9px;
   font-size: 12px;
   line-height: 15px;
   font-weight: 400;

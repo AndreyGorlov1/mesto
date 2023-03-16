@@ -1,6 +1,6 @@
 .form__input {
-  width: 360px;
-  margin: 0 35px;
+  width: 100%;
+  margin: 0;
   padding: 0 0 6px;
   border: 0px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
