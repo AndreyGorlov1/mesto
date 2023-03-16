@@ -48,7 +48,7 @@ const initialCards = [
 ];
 
 function createCard(name, link) {
-  const card = new Card(name, link, '.templateCard');
+  const card = new Card(name, link, '.templateCard', closeOnKey);
 
   return card;
 }
@@ -78,7 +78,7 @@ buttonsClose.forEach(function(button) {
   });
 });
 
-export function closeOnKey(evt) {
+function closeOnKey(evt) {
   if(evt.key === 'Escape') {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);

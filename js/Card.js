@@ -1,10 +1,9 @@
-import { closeOnKey } from '../js/script.js'
-
 export class Card {
-  constructor(title, src, templateSelector) {
+  constructor(title, src, templateSelector, closeOnKey) {
     this._title = title;
     this._src = src;
     this._templateSelector = templateSelector;
+    this._closeOnKey = closeOnKey;
   }
 
   _getTemplate() {
@@ -43,14 +42,6 @@ export class Card {
     this._card.querySelector('.element__delete').addEventListener('click', () => {
       this._deleteCard();
     });
-  }
-
-  _closeOnKey(evt) {
-    if(evt.code === 'Escape') {
-      console.log(evt);
-      this._popup = document.querySelector('popup_opened');
-      closeOnKey(this.popup);
-    }
   }
 
   _isLiked() {
