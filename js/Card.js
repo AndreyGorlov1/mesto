@@ -48,8 +48,8 @@ export class Card {
   _closeOnKey(evt) {
     if(evt.code === 'Escape') {
       console.log(evt);
-      document.querySelector('popup_opened');
-      closeOnKey();
+      this._popup = document.querySelector('popup_opened');
+      closeOnKey(this.popup);
     }
   }
 
