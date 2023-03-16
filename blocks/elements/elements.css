@@ -1,11 +1,8 @@
 .elements {
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-@media screen and (max-width: 999px) {
-  .elements {
-    justify-content: space-around;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  grid-template-rows: repeat(auto-fit, 360px);
+  gap: 20px 17px;
+  justify-content: center;
 }

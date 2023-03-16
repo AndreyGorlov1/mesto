@@ -63,6 +63,5 @@ export class FormValidator {
 
   enableValidation() {
     this._setEventListener();
-    this._toggleSubmitButtonState()
   };
 };

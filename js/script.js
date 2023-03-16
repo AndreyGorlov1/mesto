@@ -78,12 +78,13 @@ buttonsClose.forEach(function(button) {
   });
 });
 
-function closeOnKey(evt) { // Не работает
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  };
-};
+function closeOnKey(evt) {
+  if(evt.key === 'Escape') {
+    console.log(evt);
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+}
 
 function openPopup(item) {
   item.classList.add('popup_opened');

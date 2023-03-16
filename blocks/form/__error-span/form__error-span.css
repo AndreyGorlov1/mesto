@@ -1,11 +1,11 @@
 .form__error-span {
-  display: none;
-  width: 100%;
+  height: 30px;
+  width: 360px;
+  margin: 0 35px 9px;
   font-size: 12px;
   line-height: 15px;
   font-weight: 400;
   color: red;
-  /* text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden; */
+  opacity: 0;
+  visibility: hidden;
 }
