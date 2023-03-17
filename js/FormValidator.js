@@ -12,7 +12,6 @@ export class FormValidator {
   _setEventListener() {
     this._inputArray = Array.from(this._formElement.querySelectorAll(`${this._inputSelector}`));
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
-    this._errorSpan = this._formElement.querySelectorAll(`${this._errorSpan}`);
     
     this._inputArray.forEach((input, index) => {
       input.addEventListener('input', () => {
@@ -25,7 +24,7 @@ export class FormValidator {
     if (!input.validity.valid) {
       this._showErrorMessage(input, index, input.validationMessage);
       this._toggleSubmitButtonState();
-    } else if (input.validity.valid) {
+    } else {//удалил, все сломалось
       this._hideErrorMessage(input, index);
       this._toggleSubmitButtonState();
     };
@@ -34,7 +33,7 @@ export class FormValidator {
   _toggleSubmitButtonState() {
     if(this._hasInvalidInput(this._inputArray)) {
       this._submitButton.setAttribute('disabled', '');
-    } else if(!this._hasInvalidInput(this._inputArray)) {
+    } else {// пропали надписи ошибок
       this._submitButton.removeAttribute('disabled');
     }
   };

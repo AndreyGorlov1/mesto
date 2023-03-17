@@ -19,6 +19,26 @@ const cardAddExtra = document.querySelector('#addCardExtra');
 const buttonsClose = document.querySelectorAll('.popup__close');
 
 const popupsList = Array.from(document.querySelectorAll('.popup'));
+  
+const profileInputValidation = new FormValidator({
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  spanClass: '.form__error-span',
+  inputErrorClass: 'form__input_invalid',
+  spanErrorClass: 'form__error-span_enabled',
+}, profilePopupEdit);
+
+profileInputValidation.enableValidation();
+
+const cardAddInputValidation = new FormValidator({
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  spanClass: '.form__error-span',
+  inputErrorClass: 'form__input_invalid',
+  spanErrorClass: 'form__error-span_enabled',
+}, mestoAddPopup);
+
+cardAddInputValidation.enableValidation();
 
 const initialCards = [
   {
@@ -48,14 +68,14 @@ const initialCards = [
 ];
 
 function createCard(name, link) {
-  const card = new Card(name, link, '.templateCard', closeOnKey);
+  const card = new Card(name, link, '.templateCard', closeOnKey).generateCard();
 
   return card;
 }
 
 
 function addCard(name, link) {
-  const card = createCard(name, link).generateCard();
+  const card = createCard(name, link);
 
   cardSection.prepend(card);
 }
@@ -121,28 +141,8 @@ profileEdit.addEventListener('click', function() {
 
   nameInput.value = mainName.textContent;
   extraInput.value = extra.textContent;
-  
-  const inputValidation = new FormValidator({
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    spanClass: '.form__error-span',
-    inputErrorClass: 'form__input_invalid',
-    spanErrorClass: 'form__error-span_enabled',
-  }, profilePopupEdit);
-
-  inputValidation.enableValidation();
 });
 
 cardAddButton.addEventListener('click', function() {
   openPopup(mestoAddPopup);
-
-  const inputValidation = new FormValidator({
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    spanClass: '.form__error-span',
-    inputErrorClass: 'form__input_invalid',
-    spanErrorClass: 'form__error-span_enabled',
-  }, mestoAddPopup);
-
-  inputValidation.enableValidation();
 });
