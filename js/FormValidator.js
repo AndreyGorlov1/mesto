@@ -13,19 +13,19 @@ export class FormValidator {
     this._inputArray = Array.from(this._formElement.querySelectorAll(`${this._inputSelector}`));
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
     
-    this._inputArray.forEach((input, index) => {
+    this._inputArray.forEach((input) => {
       input.addEventListener('input', () => {
-        this._checkInputValidity(input, index);
+        this._checkInputValidity(input);
       });
     })
   };
 
-  _checkInputValidity(input, index) {
+  _checkInputValidity(input) {
     if (!input.validity.valid) {
-      this._showErrorMessage(input, index, input.validationMessage);
+      this._showErrorMessage(input, input.validationMessage);
       this._toggleSubmitButtonState();
-    } else {//удалил, все сломалось
-      this._hideErrorMessage(input, index);
+    } else {
+      this._hideErrorMessage(input);
       this._toggleSubmitButtonState();
     };
   };
@@ -33,25 +33,26 @@ export class FormValidator {
   _toggleSubmitButtonState() {
     if(this._hasInvalidInput(this._inputArray)) {
       this._submitButton.setAttribute('disabled', '');
-    } else {// пропали надписи ошибок
+    } else {
       this._submitButton.removeAttribute('disabled');
     }
   };
 
-  _showErrorMessage(input, index, errorMessage) {
+  _showErrorMessage(input, errorMessage) {
+    this._errorElement = this._formElement.querySelector(`.${input.id}-error`);
     input.classList.add(`${this._inputErrorClass}`);
 
-    this._errorSpan[index].classList.add(`${this._spanErrorClass}`);
+    this._errorElement.classList.add(`${this._spanErrorClass}`);
 
-    this._errorSpan[index].textContent = errorMessage;
+    this._errorElement.textContent = errorMessage;
   };
 
-  _hideErrorMessage(input, index) {
+  _hideErrorMessage(input) {
     input.classList.remove(`${this._inputErrorClass}`);
 
-    this._errorSpan[index].classList.remove(`${this._spanErrorClass}`);
+    this._errorElement.classList.remove(`${this._spanErrorClass}`);
 
-    this._errorSpan[index].textContent = '';
+    this._errorElement.textContent = '';
   };
   
   _hasInvalidInput(inputArray) {

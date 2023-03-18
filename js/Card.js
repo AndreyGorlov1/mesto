@@ -1,9 +1,11 @@
 export class Card {
-  constructor(title, src, templateSelector, closeOnKey) {
+  constructor(title, src, templateSelector, openPopup) {
     this._title = title;
     this._src = src;
     this._templateSelector = templateSelector;
-    this._closeOnKey = closeOnKey;
+
+    this._popup = document.querySelector('.popup');
+    this._openPopup = openPopup;
   }
 
   _getTemplate() {
@@ -18,9 +20,10 @@ export class Card {
 
   generateCard() {
     this._card = this._getTemplate();
+    this._cardImage = this._card.querySelector('.element__image');
 
     this._card.querySelector('.element__name').textContent = this._title;
-    this._card.querySelector('.element__image').src = this._src;
+    this._cardImage.src = this._src;
     this._card.querySelector('.element__image').alt += ' ' + this._title;
 
     this._setEventListeners();
@@ -31,7 +34,7 @@ export class Card {
   _setEventListeners() {
     this._buttonLike = this._card.querySelector('.element__like');
 
-    this._card.querySelector('.element__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._openBigPicture();
     });
 
@@ -49,14 +52,11 @@ export class Card {
   }
 
   _openBigPicture() {
-    this._bigPicture = document.querySelector('.popup');
-    this._bigPicture.classList.add('popup_opened');
+    this._openPopup(this._popup);
 
-    this._bigPicture.querySelector('.popup__image').src = this._src;
-
-    this._bigPicture.querySelector('.popup__image-name').textContent = this._title;
-
-    document.addEventListener('keydown', this._closeOnKey);
+    this._popup.querySelector('.popup__image').src = this._src;
+    this._popup.querySelector('.popup__image-name').textContent = this._title;
+    this._popup.querySelector('.popup__image').alt += ' ' + this._title;
   };
 
   _deleteCard() {

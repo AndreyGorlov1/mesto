@@ -43,9 +43,9 @@
         <form action="#" class="form" id="editProfile" name="editProfile" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
             <input type="text" name="name" id="profileName" class="form__input" value="" placeholder="Имя пользователя" minlength="2" maxlength="40" required>
-            <span class="form__error-span"></span>
+            <span class="form__span profileName-error"></span>
             <input type="text" name="name" id="profileExtra" class="form__input" value="" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
-            <span class="form__error-span"></span>
+            <span class="form__span profileExtra-error"></span>
           <button type="submit" class="form__submit">Сохранить</button>
         </form>
         <button type="button" class="popup__close" id="editPopupClose"></button>
@@ -56,9 +56,9 @@
         <form action="#" class="form" id="addMesto" name="editProfile" novalidate>
           <h2 class="form__title">Новое место</h2>
             <input type="text" name="name" id="addCardName" class="form__input" value="" placeholder="Название" minlength="2" maxlength="30" required>
-            <span class="form__error-span"></span>
+            <span class="form__span addCardName-error"></span>
             <input type="url" name="name" id="addCardExtra" class="form__input" value="" placeholder="Ссылка на картинку" required>
-            <span class="form__error-span"></span>
+            <span class="form__span addCardExtra-error"></span>
           <button type="submit" class="form__submit">Создать</button>
         </form>
         <button type="button" class="popup__close" id="addPopupClose"></button>

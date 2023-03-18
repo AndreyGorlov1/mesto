@@ -23,9 +23,9 @@ const popupsList = Array.from(document.querySelectorAll('.popup'));
 const profileInputValidation = new FormValidator({
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
-  spanClass: '.form__error-span',
+  spanClass: '.form__span',
   inputErrorClass: 'form__input_invalid',
-  spanErrorClass: 'form__error-span_enabled',
+  spanErrorClass: 'form__span-error_enabled',
 }, profilePopupEdit);
 
 profileInputValidation.enableValidation();
@@ -33,9 +33,9 @@ profileInputValidation.enableValidation();
 const cardAddInputValidation = new FormValidator({
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
-  spanClass: '.form__error-span',
+  spanClass: '.form__span',
   inputErrorClass: 'form__input_invalid',
-  spanErrorClass: 'form__error-span_enabled',
+  spanErrorClass: 'form__span-error_enabled',
 }, mestoAddPopup);
 
 cardAddInputValidation.enableValidation();
@@ -68,7 +68,7 @@ const initialCards = [
 ];
 
 function createCard(name, link) {
-  const card = new Card(name, link, '.templateCard', closeOnKey).generateCard();
+  const card = new Card(name, link, '.templateCard', openPopup).generateCard();
 
   return card;
 }
