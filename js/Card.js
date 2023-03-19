@@ -4,7 +4,10 @@ export class Card {
     this._src = src;
     this._templateSelector = templateSelector;
 
-    this._popup = document.querySelector('.popup');
+    this._popup = document.querySelector('#bigPicturePopup');
+    this._popupImage = this._popup.querySelector('.popup__image');
+    this._popupImageName = this._popup.querySelector('.popup__image-name');
+
     this._openPopup = openPopup;
   }
 
@@ -54,9 +57,9 @@ export class Card {
   _openBigPicture() {
     this._openPopup(this._popup);
 
-    this._popup.querySelector('.popup__image').src = this._src;
-    this._popup.querySelector('.popup__image-name').textContent = this._title;
-    this._popup.querySelector('.popup__image').alt += ' ' + this._title;
+    this._popupImage.src = this._src;
+    this._popupImageName.textContent = this._title;
+    this._popupImage.alt += ' ' + this._title;
   };
 
   _deleteCard() {

@@ -14,6 +14,7 @@ export class FormValidator {
     this._submitButton = this._formElement.querySelector(`${this._submitButtonSelector}`);
     
     this._inputArray.forEach((input) => {
+
       input.addEventListener('input', () => {
         this._checkInputValidity(input);
       });
@@ -23,15 +24,15 @@ export class FormValidator {
   _checkInputValidity(input) {
     if (!input.validity.valid) {
       this._showErrorMessage(input, input.validationMessage);
-      this._toggleSubmitButtonState();
+      this.toggleSubmitButtonState();
     } else {
       this._hideErrorMessage(input);
-      this._toggleSubmitButtonState();
+      this.toggleSubmitButtonState();
     };
   };
 
-  _toggleSubmitButtonState() {
-    if(this._hasInvalidInput(this._inputArray)) {
+  toggleSubmitButtonState() {
+    if(this._hasInvalidInput()) {
       this._submitButton.setAttribute('disabled', '');
     } else {
       this._submitButton.removeAttribute('disabled');
@@ -39,24 +40,27 @@ export class FormValidator {
   };
 
   _showErrorMessage(input, errorMessage) {
-    this._errorElement = this._formElement.querySelector(`.${input.id}-error`);
     input.classList.add(`${this._inputErrorClass}`);
 
-    this._errorElement.classList.add(`${this._spanErrorClass}`);
+    const errorElement = this._formElement.querySelector(`.${input.id}-error`);
 
-    this._errorElement.textContent = errorMessage;
+    errorElement.classList.add(`${this._spanErrorClass}`);
+
+    errorElement.textContent = errorMessage;
   };
 
   _hideErrorMessage(input) {
     input.classList.remove(`${this._inputErrorClass}`);
 
-    this._errorElement.classList.remove(`${this._spanErrorClass}`);
+    const errorElement = this._formElement.querySelector(`.${input.id}-error`);
 
-    this._errorElement.textContent = '';
+    errorElement.classList.remove(`${this._spanErrorClass}`);
+
+    errorElement.textContent = '';
   };
   
-  _hasInvalidInput(inputArray) {
-    return inputArray.some((inputElement) => {
+  _hasInvalidInput() {
+    return this._inputArray.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   };

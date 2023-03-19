@@ -95,6 +95,8 @@ buttonsClose.forEach(function(button) {
 
   button.addEventListener('click', function() {
     closePopup(popup);
+    // 1. У меня при переходе на сайт с гита, закрытие попапов происходит только при нажатии на оверлэй или на кнопку закрытия попапа
+    // 2. В форме есть такая проблема, когда при зажимании ЛКМ на форме и отпускании ее на оверлэе - форма закрывается... можно ли считать это за ошибку?
   });
 });
 
@@ -129,6 +131,8 @@ function handleAddFormSubmit(evt) {
   addCard(cardAddName.value, cardAddExtra.value);
 
   evt.target.reset();
+
+  cardAddInputValidation.toggleSubmitButtonState();
 
   closePopup(addMestoPopup);
 };
