@@ -31,37 +31,37 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup" id="bigPicturePopup">
+    <div class="popup popupBigPicture">
       <div class="popup__big-picture-container">
         <img src="#" alt="Большая фотография места" class="popup__image">
         <p class="popup__image-name"></p>
         <button type="button" class="popup__close" id="bigPicturePopupClose"></button>
       </div>
     </div>
-    <div class="popup" id="editProfilePopup">
+    <div class="popup profileEditPopup">
       <div class="popup__container">
-        <form action="#" class="form" id="editProfile" name="editProfile" novalidate>
+        <form action="#" class="form" name="editProfile" novalidate>
           <h2 class="form__title">Редактировать профиль</h2>
-            <input type="text" name="name" id="profileName" class="form__input" value="" placeholder="Имя пользователя" minlength="2" maxlength="40" required>
+            <input type="text" name="name" class="form__input nameInput" value="" placeholder="Имя пользователя" minlength="2" maxlength="40" required>
             <span class="form__span profileName-error"></span>
-            <input type="text" name="name" id="profileExtra" class="form__input" value="" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
+            <input type="text" name="name" class="form__input jobInput" value="" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
             <span class="form__span profileExtra-error"></span>
           <button type="submit" class="form__submit">Сохранить</button>
         </form>
-        <button type="button" class="popup__close" id="editPopupClose"></button>
+        <button type="button" class="popup__close"></button>
       </div>
     </div>
-    <div class="popup" id="addMestoPopup">
+    <div class="popup mestoAddPopup">
       <div class="popup__container">
-        <form action="#" class="form" id="addMesto" name="editProfile" novalidate>
+        <form action="#" class="form" name="editProfile" novalidate>
           <h2 class="form__title">Новое место</h2>
-            <input type="text" name="name" id="addCardName" class="form__input" value="" placeholder="Название" minlength="2" maxlength="30" required>
+            <input type="text" name="name" class="form__input mestoNameInput" value="" placeholder="Название" minlength="2" maxlength="30" required>
             <span class="form__span addCardName-error"></span>
-            <input type="url" name="name" id="addCardExtra" class="form__input" value="" placeholder="Ссылка на картинку" required>
+            <input type="url" name="name" class="form__input mestoUrlInput" value="" placeholder="Ссылка на картинку" required>
             <span class="form__span addCardExtra-error"></span>
           <button type="submit" class="form__submit" disabled>Создать</button>
         </form>
-        <button type="button" class="popup__close" id="addPopupClose"></button>
+        <button type="button" class="popup__close"></button>
       </div>
     </div>
   </div>
