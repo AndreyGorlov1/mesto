@@ -3,10 +3,6 @@ export default class Card {
     this._title = title;
     this._src = src;
     this._templateSelector = templateSelector;
-
-    this._popup = document.querySelector('.popupBigPicture');
-    this._popupImage = this._popup.querySelector('.popup__image');
-    this._popupImageName = this._popup.querySelector('.popup__image-name');
   }
 
   _getTemplate() {
@@ -35,10 +31,6 @@ export default class Card {
   _setEventListeners() {
     this._buttonLike = this._card.querySelector('.element__like');
 
-    this._cardImage.addEventListener('click', () => {
-      this._openBigPicture();
-    });
-
     this._buttonLike.addEventListener('click', () => {
       this._isLiked();
     });
@@ -51,14 +43,6 @@ export default class Card {
   _isLiked() {
     this._buttonLike.classList.toggle('element__like_active');
   }
-
-  _openBigPicture() {
-    // this._openPopup(this._popup);
-
-    this._popupImage.src = this._src;
-    this._popupImageName.textContent = this._title;
-    this._popupImage.alt += ' ' + this._title;
-  };
 
   _deleteCard() {
     this._card.remove();

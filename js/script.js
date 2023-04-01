@@ -1,11 +1,14 @@
 import Section from './Section.js';
 import Card from './Card.js';
-import Popup from './Popup.js';
 import {
   initialCards,
   cardAddButton,
   profileEdit,
+  cardImage,
 } from '../utils/constants.js';
+import PopupWithForm from './PopupWithForm.js';
+import PopupWithImage from './PopupWithImage.js';
+
 
 const imageSection = new Section ({
   items: initialCards,
@@ -20,17 +23,30 @@ const imageSection = new Section ({
 
 imageSection.renderItems();
 
-cardAddButton.addEventListener('click', () => {
-  const cardAddForm = new Popup ('.mestoAddPopup');
+const cardAddForm = new PopupWithForm ('.mestoAddPopup', handleAddFormSubmit);
 
+const profileEditForm = new PopupWithForm ('.profileEditPopup', handleEditFormSubmit);
+
+cardAddButton.addEventListener('click', () => {
+  cardAddForm.setEventListener();
   cardAddForm.open();
 });
 
 profileEdit.addEventListener('click', () => {
-  const profileEditForm = new Popup ('.profileEditPopup');
-  
+  profileEditForm.setEventListener();
   profileEditForm.open();
 });
+
+cardImage.forEach((item) => {
+  item.addEventListener('click', () => {
+    const image = item.querySelector('.element__image');
+    const name = item.querySelector('.element__name');
+    
+    const imageBigPicture = new PopupWithImage ('.popupBigPicture', image.src, name.textContent);
+
+    imageBigPicture.open();
+  })
+})
 
 // const profileInputValidation = new FormValidator({
 //   inputSelector: '.form__input',
@@ -41,16 +57,6 @@ profileEdit.addEventListener('click', () => {
 // }, profilePopupEdit);
 
 // profileInputValidation.enableValidation();
-
-// const cardAddInputValidation = new FormValidator({
-//   inputSelector: '.form__input',
-//   submitButtonSelector: '.form__submit',
-//   spanClass: '.form__span',
-//   inputErrorClass: 'form__input_invalid',
-//   spanErrorClass: 'form__span-error_enabled',
-// }, mestoAddPopup);
-
-// cardAddInputValidation.enableValidation();
 
 // popupsList.forEach(function(item) {
 //   item.addEventListener('mousedown', function(evt) {
@@ -84,26 +90,24 @@ profileEdit.addEventListener('click', () => {
 //   document.removeEventListener('keydown', closeOnKey);
 // };
 
-// function handleEditFormSubmit(evt) {
-//   evt.preventDefault();
+function handleEditFormSubmit(evt) {
+  evt.preventDefault();
 
-//   mainName.textContent = nameInput.value;
-//   extra.textContent = extraInput.value;
+  mainName.textContent = nameInput.value;
+  extra.textContent = extraInput.value;
+};
 
-//   closePopup(profilePopupEdit);
-// };
+function handleAddFormSubmit(evt) {
+  evt.preventDefault();
 
-// function handleAddFormSubmit(evt) {
-//   evt.preventDefault();
+  addCard(cardAddName.value, cardAddExtra.value);
 
-//   addCard(cardAddName.value, cardAddExtra.value);
+  evt.target.reset();
 
-//   evt.target.reset();
+  cardAddInputValidation.toggleSubmitButtonState();
 
-//   cardAddInputValidation.toggleSubmitButtonState();
-
-//   closePopup(addMestoPopup);
-// };
+  closePopup(addMestoPopup);
+};
 
 // profileFormEdit.addEventListener('submit', handleEditFormSubmit);
 // mestoAddForm.addEventListener('submit', handleAddFormSubmit);

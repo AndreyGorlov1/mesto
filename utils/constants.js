@@ -7,6 +7,7 @@ export const nameInput = document.querySelector('.nameInput');
 export const jobInput = document.querySelector('.jobInput');
 export const mestoNameInput = document.querySelector('.mestoNameInput');
 export const mestoUrlInput = document.querySelector('.mestoUrlInput');
+export const cardImage = document.querySelectorAll('.element__image');
 
 export const initialCards = [
     {
