@@ -23,18 +23,34 @@ const imageSection = new Section ({
 
 imageSection.renderItems();
 
-const cardAddForm = new PopupWithForm ('.mestoAddPopup', handleAddFormSubmit);
+const cardAddForm = new PopupWithForm (
+  '.mestoAddPopup',
+  (evt) => {
+    evt.preventDefault();
+  
+    evt.target.reset();
+  }
+);
 
-const profileEditForm = new PopupWithForm ('.profileEditPopup', handleEditFormSubmit);
+const profileEditForm = new PopupWithForm (
+  '.profileEditPopup',
+  (evt) => {
+    evt.preventDefault();
+
+    
+
+    evt.target.reset();
+  }
+);
 
 cardAddButton.addEventListener('click', () => {
-  cardAddForm.setEventListener();
   cardAddForm.open();
+  cardAddForm.setEventListener();
 });
 
 profileEdit.addEventListener('click', () => {
-  profileEditForm.setEventListener();
   profileEditForm.open();
+  profileEditForm.setEventListener();
 });
 
 cardImage.forEach((item) => {
@@ -47,78 +63,3 @@ cardImage.forEach((item) => {
     imageBigPicture.open();
   })
 })
-
-// const profileInputValidation = new FormValidator({
-//   inputSelector: '.form__input',
-//   submitButtonSelector: '.form__submit',
-//   spanClass: '.form__span',
-//   inputErrorClass: 'form__input_invalid',
-//   spanErrorClass: 'form__span-error_enabled',
-// }, profilePopupEdit);
-
-// profileInputValidation.enableValidation();
-
-// popupsList.forEach(function(item) {
-//   item.addEventListener('mousedown', function(evt) {
-//     if(evt.target.classList.contains('popup')) {
-//       closePopup(evt.target);
-//     }
-//   });
-// });
-
-// buttonsClose.forEach(function(button) {
-//   const popup = button.closest('.popup');
-
-//   button.addEventListener('click', function() {
-//     closePopup(popup);
-//   });
-// });
-
-// function closeOnKey(evt) {
-//   if(evt.key === 'Escape') {
-//     const popup = document.querySelector('.popup_opened');
-//     closePopup(popup);
-//   }
-// }
-
-// function openPopup(item) {
-//   item.classList.add('popup_opened');
-//   document.addEventListener('keydown', closeOnKey);
-// };
-// function closePopup(item) {
-//   item.classList.remove('popup_opened');
-//   document.removeEventListener('keydown', closeOnKey);
-// };
-
-function handleEditFormSubmit(evt) {
-  evt.preventDefault();
-
-  mainName.textContent = nameInput.value;
-  extra.textContent = extraInput.value;
-};
-
-function handleAddFormSubmit(evt) {
-  evt.preventDefault();
-
-  addCard(cardAddName.value, cardAddExtra.value);
-
-  evt.target.reset();
-
-  cardAddInputValidation.toggleSubmitButtonState();
-
-  closePopup(addMestoPopup);
-};
-
-// profileFormEdit.addEventListener('submit', handleEditFormSubmit);
-// mestoAddForm.addEventListener('submit', handleAddFormSubmit);
-
-// profileEdit.addEventListener('click', function() {
-//   openPopup(profilePopupEdit);
-
-//   nameInput.value = mainName.textContent;
-//   extraInput.value = extra.textContent;
-// });
-
-// cardAddButton.addEventListener('click', function() {
-//   openPopup(mestoAddPopup);
-// });
