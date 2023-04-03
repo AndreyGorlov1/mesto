@@ -1,3 +1,5 @@
+import PopupWithImage from "./PopupWithImage.js";
+
 export default class Card {
   constructor(title, src, templateSelector) {
     this._title = title;
@@ -21,7 +23,7 @@ export default class Card {
 
     this._card.querySelector('.element__name').textContent = this._title;
     this._cardImage.src = this._src;
-    this._card.querySelector('.element__image').alt += ' ' + this._title;
+    this._cardImage.alt += ' ' + this._title;
 
     this._setEventListeners();
 
@@ -38,6 +40,12 @@ export default class Card {
     this._card.querySelector('.element__delete').addEventListener('click', () => {
       this._deleteCard();
     });
+
+    this._cardImage.addEventListener('click', () => {
+      const cardBigPicture = new PopupWithImage ('.popup', this._title, this._src);
+
+      cardBigPicture.open();
+    })
   }
 
   _isLiked() {

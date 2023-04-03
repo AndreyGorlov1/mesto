@@ -11,7 +11,7 @@ export default class Popup {
             this.close();
         });
 
-        this._popup.querySelector('.popup__big-picture-containier')
+        this._popup.querySelector('.popup__big-picture-container')
     }
 
     _handleEscClose(evt) {
