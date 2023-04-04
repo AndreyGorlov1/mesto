@@ -23,25 +23,9 @@ const imageSection = new Section ({
 
 imageSection.renderItems();
 
-const cardAddForm = new PopupWithForm (
-  '.mestoAddPopup',
-  (evt) => {
-    evt.preventDefault();
-  
-    evt.target.reset();
-  }
-);
+const cardAddForm = new PopupWithForm ('.mestoAddPopup');
 
-const profileEditForm = new PopupWithForm (
-  '.profileEditPopup',
-  (evt) => {
-    evt.preventDefault();
-
-    
-
-    evt.target.reset();
-  }
-);
+const profileEditForm = new PopupWithForm ( '.profileEditPopup' );
 
 cardAddButton.addEventListener('click', () => {
   cardAddForm.open();

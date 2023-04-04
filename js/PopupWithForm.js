@@ -1,4 +1,5 @@
 import Popup from "./Popup.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import {
     mainName,
@@ -6,14 +7,16 @@ import {
 } from "../utils/constants.js"
 
 export default class PopupWithForm extends Popup {
-    constructor( popupSelector, formSubmit ) {
+    constructor( popupSelector ) {
         super(popupSelector);
-        this._formSubmit = formSubmit;
+
+        this._nameEdit = this._popup.querySelector('.nameInput');
+        this._extraEdit = this._popup.querySelector('.extraInput');
     }
 
     _getInputValues() {
         this._name = this._nameEdit.value;
-        this._extra = this._jobEdit.value;
+        this._extra = this._extraEdit.value;
     }
 
     setEventListener() {
@@ -29,21 +32,34 @@ export default class PopupWithForm extends Popup {
 
         inputValidation.enableValidation();
 
-        this._formSubmitButton.addEventListener('submit', () => {
-            this._formSubmit();
+        this._formSubmitButton.addEventListener('submit', (event) => {
+            event.preventDefault();
             this.close();
+            event.target.reset();
         })
+
+        super.setEventListener();
     }
 
     open() {
-        const open = super.open();
-        
-        this._nameEdit = this._popup.querySelector('.nameInput');
-        this._jobEdit = this._popup.querySelector('.extraInput');
+        super.open();
 
-        if(this._popupSelector = '.profileEditPopup') {
-        this._nameEdit.value = mainName.textContent;
-        this._jobEdit.value = extra.textContent;
+        if (this._popupSelector === '.profileEditPopup') {
+            this._nameEdit.value = mainName.textContent;
+            this._extraEdit.value = extra.textContent;
         }
+    }
+
+    close() {
+        if (this._popupSelector === '.profileEditPopup') {
+            mainName.textContent = this._name;
+            extra.textContent = this._extra;
+        } else if (this._popupSelector === '.mestoAddPopup') {
+            const newCard = new Card (this._nameEdit.value, this._extraEdit.value, '.templateCard');
+
+            newCard.generateCard();
+        }
+
+        super.close();
     }
 }

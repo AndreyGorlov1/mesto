@@ -8,15 +8,12 @@ export default class Popup {
 
     setEventListener() {
         this._popup.querySelector('.popup__close').addEventListener('click', () => {
-            console.log('esc');
             this.close();
         });
 
-        this._popup.querySelector('.popup').addEventListener('click', () => {
-            this.close();
-        });
-
-        console.log(this._popup.querySelector('.popup__close'));
+        // this._popup.querySelector('.popup__container').addEventListener('click', () => {
+        //     this.close();
+        // });
     }
 
     _handleEscClose(evt) {
