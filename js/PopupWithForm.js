@@ -1,6 +1,7 @@
 import Popup from "./Popup.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import Section from "./Section.js";
 import {
     mainName,
     extra
@@ -32,7 +33,7 @@ export default class PopupWithForm extends Popup {
 
         inputValidation.enableValidation();
 
-        this._formSubmitButton.addEventListener('submit', (event) => {
+        this._popup.addEventListener('submit', (event) => {
             event.preventDefault();
             this.close();
             event.target.reset();
@@ -51,13 +52,27 @@ export default class PopupWithForm extends Popup {
     }
 
     close() {
+
         if (this._popupSelector === '.profileEditPopup') {
-            mainName.textContent = this._name;
-            extra.textContent = this._extra;
+            mainName.textContent = this._nameEdit.value;
+            extra.textContent = this._extraEdit.value;
         } else if (this._popupSelector === '.mestoAddPopup') {
             const newCard = new Card (this._nameEdit.value, this._extraEdit.value, '.templateCard');
+            console.log(newCard);
+            const cardElement = newCard.generateCard();
 
-            newCard.generateCard();
+            imageSection.addItem(cardElement);
+
+            const imageSection = new Section ({
+                items: initialCards,
+                renderer: (item) => {
+                  const card = new Card (item.name, item.link, '.templateCard');
+              
+                  const cardElement = card.generateCard();
+              
+                  imageSection.addItem(cardElement);
+                }
+              }, '.elements');
         }
 
         super.close();

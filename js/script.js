@@ -24,17 +24,17 @@ const imageSection = new Section ({
 imageSection.renderItems();
 
 const cardAddForm = new PopupWithForm ('.mestoAddPopup');
+  cardAddForm.setEventListener();
 
 const profileEditForm = new PopupWithForm ( '.profileEditPopup' );
+  profileEditForm.setEventListener();
 
 cardAddButton.addEventListener('click', () => {
   cardAddForm.open();
-  cardAddForm.setEventListener();
 });
 
 profileEdit.addEventListener('click', () => {
   profileEditForm.open();
-  profileEditForm.setEventListener();
 });
 
 cardImage.forEach((item) => {
