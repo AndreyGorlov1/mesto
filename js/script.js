@@ -5,6 +5,8 @@ import {
   cardAddButton,
   profileEdit,
   cardImage,
+  mainName,
+  extra,
 } from '../utils/constants.js';
 import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
@@ -23,10 +25,24 @@ const imageSection = new Section ({
 
 imageSection.renderItems();
 
-const cardAddForm = new PopupWithForm ('.mestoAddPopup');
+const cardAddForm = new PopupWithForm ('.mestoAddPopup',
+  (title, src) => {
+    const card = new Card (title, src, '.templateCard');
+    
+    const cardElement = card.generateCard();
+    
+    imageSection.addItem(cardElement);
+  }
+);
   cardAddForm.setEventListener();
 
-const profileEditForm = new PopupWithForm ( '.profileEditPopup' );
+const profileEditForm = new PopupWithForm ( '.profileEditPopup', 
+  (name, job) => {
+    console.log(name, job)
+        mainName.textContent = name;
+        extra.textContent = job;
+  }
+);
   profileEditForm.setEventListener();
 
 cardAddButton.addEventListener('click', () => {

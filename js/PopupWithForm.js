@@ -1,16 +1,15 @@
 import Popup from "./Popup.js";
-import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
 import {
     mainName,
     extra
 } from "../utils/constants.js"
 
 export default class PopupWithForm extends Popup {
-    constructor( popupSelector ) {
+    constructor( popupSelector, formSubmit) {
         super(popupSelector);
-
+        
+        this._formSubmit = formSubmit;
         this._nameEdit = this._popup.querySelector('.nameInput');
         this._extraEdit = this._popup.querySelector('.extraInput');
     }
@@ -35,6 +34,16 @@ export default class PopupWithForm extends Popup {
 
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            this._formSubmit(this._nameEdit.value, this._extraEdit.value)
+
+            // if (this._popupSelector === '.profileEditPopup') {
+            //     mainName.textContent = this._nameEdit.value;
+            //     extra.textContent = this._extraEdit.value;
+            // } else if (this._popupSelector === '.mestoAddPopup') {
+            //     this._formSubmit(this._nameEdit.value, this._extraEdit.value, '.templateCard')
+            // }
+
             this.close();
             event.target.reset();
         })
@@ -49,32 +58,5 @@ export default class PopupWithForm extends Popup {
             this._nameEdit.value = mainName.textContent;
             this._extraEdit.value = extra.textContent;
         }
-    }
-
-    close() {
-
-        if (this._popupSelector === '.profileEditPopup') {
-            mainName.textContent = this._nameEdit.value;
-            extra.textContent = this._extraEdit.value;
-        } else if (this._popupSelector === '.mestoAddPopup') {
-            const newCard = new Card (this._nameEdit.value, this._extraEdit.value, '.templateCard');
-            console.log(newCard);
-            const cardElement = newCard.generateCard();
-
-            imageSection.addItem(cardElement);
-
-            const imageSection = new Section ({
-                items: initialCards,
-                renderer: (item) => {
-                  const card = new Card (item.name, item.link, '.templateCard');
-              
-                  const cardElement = card.generateCard();
-              
-                  imageSection.addItem(cardElement);
-                }
-              }, '.elements');
-        }
-
-        super.close();
     }
 }
