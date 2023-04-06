@@ -11,9 +11,7 @@ export default class Popup {
             this.close();
         });
 
-        // this._popup.querySelector('.popup__container').addEventListener('click', () => {
-        //     this.close();
-        // });
+
     }
 
     _handleEscClose(evt) {

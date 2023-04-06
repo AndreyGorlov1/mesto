@@ -35,14 +35,7 @@ export default class PopupWithForm extends Popup {
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            this._formSubmit(this._nameEdit.value, this._extraEdit.value)
-
-            // if (this._popupSelector === '.profileEditPopup') {
-            //     mainName.textContent = this._nameEdit.value;
-            //     extra.textContent = this._extraEdit.value;
-            // } else if (this._popupSelector === '.mestoAddPopup') {
-            //     this._formSubmit(this._nameEdit.value, this._extraEdit.value, '.templateCard')
-            // }
+            this._formSubmit(this._nameEdit.value, this._extraEdit.value);
 
             this.close();
             event.target.reset();

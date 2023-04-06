@@ -1,9 +1,10 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor(title, src, templateSelector) {
+  constructor({title, src, openBigPicture}, templateSelector) {
     this._title = title;
     this._src = src;
+    this._openBigPicture = openBigPicture;
     this._templateSelector = templateSelector;
   }
 
@@ -45,6 +46,10 @@ export default class Card {
       const cardBigPicture = new PopupWithImage ('.popup', this._title, this._src);
 
       cardBigPicture.open();
+    })
+
+    this._cardImage.addEventListener('click', () => {
+      this._openBigPicture(this._title, this._src);
     })
   }
 
