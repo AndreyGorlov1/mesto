@@ -12,7 +12,7 @@ export default class Popup {
         });
 
         this._popup.addEventListener('click', (event) => {
-            if(event.target.className === 'popup_opened') {
+            if(event.target.className.includes('popup_opened')) {
                 this.close()
             }
         })

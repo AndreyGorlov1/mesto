@@ -6,15 +6,15 @@ export default class UserInfo {
     
     getUserInfo() {
         const userInfo = {
-            userName: this._nameSelector,
-            userExtra: this._extraSelector,
+            userName: this._nameSelector.textContent,
+            userExtra: this._extraSelector.textContent,
         }
 
         return userInfo;
     }
 
-    setUserInfo() {
-        this._nameSelector = this.getUserInfo().name;
-        this._extraSelector = this.getUserInfo().extra;
+    setUserInfo(name, extra) {
+        this._nameSelector = name;
+        this._extraSelector = extra;
     }
 }

@@ -53,13 +53,14 @@ const cardAddForm = new PopupWithForm (
 );
 cardAddForm.setEventListener();
 
-const profileEditForm = new PopupWithForm ( '.profileEditPopup', 
-  () => {
-    const userInfo = new UserInfo({
-      nameSelector: '.profile__main-name',
-      extraSelector: '.profile__activity'});
+const userInfo = new UserInfo({
+  nameSelector: '.profile__main-name',
+  extraSelector: '.profile__activity'
+});
 
-    userInfo.setUserInfo();
+const profileEditForm = new PopupWithForm ( '.profileEditPopup', 
+  (name, extra) => {
+    userInfo.setUserInfo(name, extra);
   }
 );
 profileEditForm.setEventListener();
