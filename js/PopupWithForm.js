@@ -4,6 +4,7 @@ import {
     mainName,
     extra
 } from "../utils/constants.js"
+import UserInfo from "./UserInfo.js";
 
 export default class PopupWithForm extends Popup {
     constructor( popupSelector, formSubmit) {
@@ -34,6 +35,15 @@ export default class PopupWithForm extends Popup {
 
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault();
+
+            const userInfo = new UserInfo({
+                nameSelector: '.nameInput',
+                extraSelector: '.extraInput'
+            });
+
+            userInfo.getUserInfo();
+
+            console.log(userInfo.getUserInfo());
 
             this._formSubmit(this._nameEdit.value, this._extraEdit.value);
 

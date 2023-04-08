@@ -11,7 +11,11 @@ export default class Popup {
             this.close();
         });
 
-
+        this._popup.addEventListener('click', (event) => {
+            if(event.target.className === 'popup_opened') {
+                this.close()
+            }
+        })
     }
 
     _handleEscClose(evt) {
