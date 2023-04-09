@@ -1,13 +1,13 @@
-export const mainName = document.querySelector('.profile__main-name');
-export const extra = document.querySelector('.profile__activity');
-export const profileEdit = document.querySelector('.profile__edit-button');
-export const cardAddButton = document.querySelector('.profile__add-button');
-export const cardSection = document.querySelector('.elements');
-export const nameInput = document.querySelector('.nameInput');
-export const jobInput = document.querySelector('.jobInput');
-export const mestoNameInput = document.querySelector('.mestoNameInput');
-export const mestoUrlInput = document.querySelector('.mestoUrlInput');
-export const cardImage = document.querySelectorAll('.element__image');
+export const mainName = document.querySelector('.profile__main-name');//+
+export const extra = document.querySelector('.profile__activity');//+
+export const profileEdit = document.querySelector('.profile__edit-button');//+
+export const cardAddButton = document.querySelector('.profile__add-button');//+
+// export const cardSection = document.querySelector('.elements');
+// export const nameInput = document.querySelector('.nameInput');
+// export const jobInput = document.querySelector('.jobInput');
+// export const mestoNameInput = document.querySelector('.mestoNameInput');
+// export const mestoUrlInput = document.querySelector('.mestoUrlInput');
+// export const cardImage = document.querySelectorAll('.element__image');
 
 export const initialCards = [
     {
@@ -34,4 +34,4 @@ export const initialCards = [
       name: 'Байкал',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
-  ];
+  ];//+

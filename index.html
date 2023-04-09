@@ -5,20 +5,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Интересные места</title>
-  <link rel="stylesheet" href="pages/index.css">
+  <!-- <link rel="stylesheet" href="pages/index.css"> -->
 </head>
 <body class="body">
   <div class="page">
     <header class="header">
-      <img src="images/Mesto.svg" alt="Логотип" class="header__logo">
+      <img src="<%=require('./images/Mesto.svg')%>" alt="Логотип" class="header__logo">
     </header>
     <main class="main">
       <section class="profile">
-        <img src="images/avatar.png" alt="Фотография аватара" class="profile__avatar">
+        <img src="<%=require('./images/avatar.png')%>" alt="Фотография аватара" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__main-name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button">
-            <img src="images/Edit.svg" alt="Редактировать" class="profile__edit-image">
+            <img src="<%=require('./images/Edit.svg')%>" alt="Редактировать" class="profile__edit-image">
           </button>
           <p class="profile__activity">Исследователь океана</p>
         </div>
@@ -71,11 +71,11 @@
       <div class="element__info">
         <h2 class="element__name"></h2>
         <button type="button" class="element__like">
-          <img class="element__like-image" src="./images/Like.svg" alt="Нравится">
+          <img class="element__like-image" src="<%=require('./images/Like.svg')%>" alt="Нравится">
         </button>
       </div>
       <button type="button" class="element__delete">
-        <img class="element__delete-image" src="./images/Trash.svg" alt="Удалить">
+        <img class="element__delete-image" src="<%=require('./images/Trash.svg')%>" alt="Удалить">
       </button>
     </article>
   </template>

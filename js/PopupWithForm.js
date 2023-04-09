@@ -4,7 +4,6 @@ import {
     mainName,
     extra
 } from "../utils/constants.js"
-import UserInfo from "./UserInfo.js";
 
 export default class PopupWithForm extends Popup {
     constructor( popupSelector, formSubmit) {
