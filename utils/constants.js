@@ -3,11 +3,14 @@ export const extra = document.querySelector('.profile__activity');//+
 export const profileEdit = document.querySelector('.profile__edit-button');//+
 export const cardAddButton = document.querySelector('.profile__add-button');//+
 // export const cardSection = document.querySelector('.elements');
-// export const nameInput = document.querySelector('.nameInput');
-// export const jobInput = document.querySelector('.jobInput');
+export const nameInput = document.querySelector('.nameInput');
+export const jobInput = document.querySelector('.extraInput');
 // export const mestoNameInput = document.querySelector('.mestoNameInput');
 // export const mestoUrlInput = document.querySelector('.mestoUrlInput');
 // export const cardImage = document.querySelectorAll('.element__image');
+export const profileForm = document.querySelector('.profileEditPopup')
+export const mestoAddForm = document.querySelector('.mestoAddPopup')
+
 
 export const initialCards = [
     {

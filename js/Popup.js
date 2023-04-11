@@ -11,11 +11,11 @@ export default class Popup {
             this.close();
         });
 
-        this._popup.addEventListener('keydown', (event) => {
+        this._popup.addEventListener('click', (event) => {
             if(event.target.className.includes('popup_opened')) {
-                this.close()
+                this.close();
             }
-        })
+        });
     }
 
     _handleEscClose(evt) {

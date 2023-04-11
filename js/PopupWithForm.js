@@ -1,55 +1,48 @@
 import Popup from "./Popup.js";
-import FormValidator from "./FormValidator.js";
-import {
-    mainName,
-    extra
-} from "../utils/constants.js"
 
 export default class PopupWithForm extends Popup {
-    constructor( popupSelector, formSubmit) {
+    constructor( popupSelector, {formSubmit, formValidation}) {
         super(popupSelector);
         
         this._formSubmit = formSubmit;
-        this._nameEdit = this._popup.querySelector('.nameInput');
-        this._extraEdit = this._popup.querySelector('.extraInput');
+
+        this._formValidation = formValidation;
+
+        this._form = this._popup.querySelector('.form');
     }
 
     _getInputValues() {
-        this._name = this._nameEdit.value;
-        this._extra = this._extraEdit.value;
+        this._inputList = this._popup.querySelectorAll('.form__input');
+
+        this._formValues = {};
+
+        this._inputList.forEach(input => {
+            this._formValues[input.name] = input.value;
+        });
+
+        return this._formValues;
     }
 
     setEventListener() {
         this._formSubmitButton = this._popup.querySelector('.form__submit');
 
-        const inputValidation = new FormValidator({
-            inputSelector: '.form__input',
-            submitButtonSelector: '.form__submit',
-            spanClass: '.form__span',
-            inputErrorClass: 'form__input_invalid',
-            spanErrorClass: 'form__span-error_enabled',
-          }, this._popup);
-
-        inputValidation.enableValidation();
+        this._formValidation.enableValidation();
 
         this._popup.addEventListener('submit', (event) => {
             event.preventDefault();
 
-            this._formSubmit(this._nameEdit.value, this._extraEdit.value);
+            this._getInputValues();
+
+            this._formSubmit(this._formValues);
 
             this.close();
-            event.target.reset();
         })
 
         super.setEventListener();
     }
-
-    open() {
-        super.open();
-
-        if (this._popupSelector === '.profileEditPopup') {
-            this._nameEdit.value = mainName.textContent;
-            this._extraEdit.value = extra.textContent;
-        }
+    
+    close() {
+        super.close();
+        this._form.reset();
     }
 }
