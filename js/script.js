@@ -97,5 +97,4 @@ profileEdit.addEventListener('click', () => {
   jobInput.value = infoObject.userExtra;
 
   profileEditForm.open();
-  profileEditForm.setEventListener();
 });

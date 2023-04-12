@@ -35,6 +35,8 @@ export default class PopupWithForm extends Popup {
 
             this._formSubmit(this._formValues);
 
+            this._formValidation.toggleSubmitButtonState();
+
             this.close();
         })
 
@@ -44,7 +46,5 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
         this._form.reset();
-
-        this._formValidation.toggleSubmitButtonState();
     }
 }
