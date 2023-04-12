@@ -9,11 +9,11 @@ export default class PopupWithForm extends Popup {
         this._formValidation = formValidation;
 
         this._form = this._popup.querySelector('.form');
+
+        this._inputList = this._popup.querySelectorAll('.form__input');
     }
 
     _getInputValues() {
-        this._inputList = this._popup.querySelectorAll('.form__input');
-
         this._formValues = {};
 
         this._inputList.forEach(input => {
@@ -44,5 +44,7 @@ export default class PopupWithForm extends Popup {
     close() {
         super.close();
         this._form.reset();
+
+        this._formValidation.toggleSubmitButtonState();
     }
 }

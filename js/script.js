@@ -30,11 +30,12 @@ function createCard(item) {
   return cardElemnt;
 };
 
-function openBigPicture(title, src) {
-  const bigPicture = new PopupWithImage('.popupBigPicture');
+const bigPicture = new PopupWithImage('.popupBigPicture');
 
+function openBigPicture(title, src) {
   bigPicture.open(title, src);
-}
+  bigPicture.setEventListener();
+};
 
 const userInfo = new UserInfo({
   nameSelector: '.profile__main-name',
@@ -86,6 +87,7 @@ profileEditForm.setEventListener();
 
 cardAddButton.addEventListener('click', () => {
   cardAddForm.open();
+  cardAddForm.setEventListener();
 });
 
 profileEdit.addEventListener('click', () => {
@@ -95,4 +97,5 @@ profileEdit.addEventListener('click', () => {
   jobInput.value = infoObject.userExtra;
 
   profileEditForm.open();
+  profileEditForm.setEventListener();
 });
