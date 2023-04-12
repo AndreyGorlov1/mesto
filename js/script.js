@@ -31,10 +31,10 @@ function createCard(item) {
 };
 
 const bigPicture = new PopupWithImage('.popupBigPicture');
+  bigPicture.setEventListener();
 
 function openBigPicture(title, src) {
   bigPicture.open(title, src);
-  bigPicture.setEventListener();
 };
 
 const userInfo = new UserInfo({
@@ -87,7 +87,6 @@ profileEditForm.setEventListener();
 
 cardAddButton.addEventListener('click', () => {
   cardAddForm.open();
-  cardAddForm.setEventListener();
 });
 
 profileEdit.addEventListener('click', () => {
