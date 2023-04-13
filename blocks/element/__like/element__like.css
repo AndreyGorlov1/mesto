@@ -10,3 +10,6 @@
 .element__like:hover {
   opacity: 0.5;
 }
+.element__like::after {
+  content: '';
+}
